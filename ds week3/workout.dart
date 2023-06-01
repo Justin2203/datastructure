@@ -747,5 +747,113 @@
 // }
 // traverse(vertex);
 
+// ---------------------------------heap sort---------------------------------------------
 
+class minheap {
+  List<int> heap = [];
 
+  minheap() {
+    heap = [];
+  }
+
+  void build(List<int> array) {
+    heap = List.from(array);
+    for (int i = parent(heap.length - 1); i >= 0; i--) {
+      shiftdown(i);
+    }
+  }
+
+  void shiftdown(int currentindex) {
+    int endindex = heap.length - 1;
+    int leftindex = leftchild(currentindex);
+    while (leftindex <= endindex) {
+      int rightindex = rightchild(currentindex);
+      int indextoshift;
+      if (rightindex <= endindex && heap[rightindex] < heap[leftindex]) {
+        indextoshift = rightindex;
+      } else {
+        indextoshift = leftindex;
+      }
+      if (heap[currentindex] > heap[indextoshift]) {
+        swap(currentindex, indextoshift);
+        currentindex = indextoshift;
+        leftindex = leftchild(currentindex);
+      } else {
+        return;
+      }
+    }
+  }
+
+  void shiftup(int currentindex) {
+    int parentindex = parent(currentindex);
+    while (currentindex > 0 && heap[parentindex] > heap[currentindex]) {
+      swap(currentindex, parentindex);
+      currentindex = parentindex;
+      parentindex = parent(currentindex);
+    }
+  }
+
+  void remove() {
+    swap(0, heap.length - 1);
+    heap.removeLast();
+    shiftdown(0);
+  }
+
+  void insert(int value) {
+    heap.add(value);
+    shiftup(heap.length - 1);
+  }
+
+  int parent(int i) {
+    return ((i - 1) ~/ 2);
+  }
+
+  int leftchild(int i) {
+    return (i * 2 + 1);
+  }
+
+  int rightchild(int i) {
+    return (i * 2 + 2);
+  }
+
+  void display() {
+    for (int i = heap.length - 1; i >= 0; i--) {
+      print(heap[i]);
+    }
+  }
+
+  void swap(int i, int j) {
+    int temp = heap[i];
+    heap[i] = heap[j];
+    heap[j] = temp;
+  }
+
+  void heapsort() {
+    for (int i = heap.length - 1; i >= 0; i--) {
+      swap(0, i);
+      shiftdownheapsort(0, i - 1);
+    }
+  }
+
+  void shiftdownheapsort(int currentindex, int endindex) {
+    int leftindex = leftchild(currentindex);
+    while (leftindex <= endindex) {
+      int rightindex = rightchild(currentindex);
+      int idxshift;
+      if (rightindex < endindex && heap[rightindex] < heap[leftindex]) {
+        idxshift = rightindex;
+      } else {
+        idxshift = leftindex;
+      }
+      if (heap[currentindex] > heap[idxshift]) {
+        swap(currentindex, idxshift) {
+          currentindex = idxshift;
+          leftindex = leftchild(currentindex);
+        }
+      }
+      else{
+        return;
+      }
+    }
+  }
+}
