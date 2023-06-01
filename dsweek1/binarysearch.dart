@@ -44,7 +44,7 @@ int binarysearch(List<int> list, int value) {
 
 void main() {
   List<int> numbers = [10, 20, 30, 40, 50];
-  int element = 70;
+  int element = 50;
   int result = binarysearch(numbers, element);
   if (result == -1) {
     print("element not found");
