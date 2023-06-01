@@ -535,116 +535,159 @@
 //   }
 // }
 
-
 // ------------------------------binarysearch tree---------------------------------------
-class Node {
-  int data;
-  Node? left;
-  Node? right;
+// class Node {
+//   int data;
+//   Node? left;
+//   Node? right;
 
-  Node(this.data);
-}
+//   Node(this.data);
+// }
 
-class binarysearch {
-  Node? root;
-  binarysearch();
+// class binarysearch {
+//   Node? root;
+//   binarysearch();
 
-  void insert(int data) {
-    Node? newNode = Node(data);
-    if (root == null) {
-      root = newNode;
-    } else {
-      Node? current = root;
-      while (true) {
-        if (data < current!.data) {
-          if (current.left == null) {
-            current.left = newNode;
-            break;
-          }
-          current = current.left;
-        } else {
-          if (current.right == null) {
-            current.right = newNode;
-            break;
-          }
-          current = current.right;
-        }
-      }
-    }
-  }
+//   void insert(int data) {
+//     Node? newNode = Node(data);
+//     if (root == null) {
+//       root = newNode;
+//     } else {
+//       Node? current = root;
+//       while (true) {
+//         if (data < current!.data) {
+//           if (current.left == null) {
+//             current.left = newNode;
+//             break;
+//           }
+//           current = current.left;
+//         } else {
+//           if (current.right == null) {
+//             current.right = newNode;
+//             break;
+//           }
+//           current = current.right;
+//         }
+//       }
+//     }
+//   }
 
-  bool contains(int data) {
-    Node? current = root;
-    while (current != null) {
-      if (data == current.data) {
-        return true;
-      } else if (data <= current.data) {
-        current = current.left;
-      } else {
-        current = current.right;
-      }
-    }
-    return false;
-  }
+//   bool contains(int data) {
+//     Node? current = root;
+//     while (current != null) {
+//       if (data == current.data) {
+//         return true;
+//       } else if (data <= current.data) {
+//         current = current.left;
+//       } else {
+//         current = current.right;
+//       }
+//     }
+//     return false;
+//   }
 
-  bool isbst(Node? node, int minvalue, int maxvalue) {
-    if (node == null) {
-      return true;
-    }
-    if (node.data < minvalue || node.data > maxvalue) {
-      return false;
-    }
-    return isbst(node, minvalue, node.data - 1) &&
-        isbst(node, node.data + 1, maxvalue);
-  }
+//   bool isbst(Node? node, int minvalue, int maxvalue) {
+//     if (node == null) {
+//       return true;
+//     }
+//     if (node.data < minvalue || node.data > maxvalue) {
+//       return false;
+//     }
+//     return isbst(node, minvalue, node.data - 1) &&
+//         isbst(node, node.data + 1, maxvalue);
+//   }
 
-  bool isvalid() {
-    return isbst(root, 0, 644654764);
-  }
+//   bool isvalid() {
+//     return isbst(root, 0, 644654764);
+//   }
 
-  int getheight(Node? node) {
-    if (node == null) {
-      return 0;
-    }
+//   int getheight(Node? node) {
+//     if (node == null) {
+//       return 0;
+//     }
 
-    int leftHeight = getheight(node.left);
-    int rightHeight = getheight(node.right);
+//     int leftHeight = getheight(node.left);
+//     int rightHeight = getheight(node.right);
 
-    return 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
-  }
+//     return 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
+//   }
 
-  void preorder(Node? node) {
-    if (node != null) {
-      print(node.data);
-      preorder(node.left);
-      preorder(node.right);
-    }
-  }
+//   void preorder(Node? node) {
+//     if (node != null) {
+//       print(node.data);
+//       preorder(node.left);
+//       preorder(node.right);
+//     }
+//   }
 
-  void inorder(Node? node) {
-    if (node != null) {
-      inorder(node.left);
-      print(node.data);
-      inorder(node.right);
-    }
-  }
+//   void inorder(Node? node) {
+//     if (node != null) {
+//       inorder(node.left);
+//       print(node.data);
+//       inorder(node.right);
+//     }
+//   }
 
-  void postorder(Node? node) {
-    if (node != null) {
-      postorder(node.left);
-      postorder(node.right);
-      print(node.data);
-    }
-  }
-}
+//   void postorder(Node? node) {
+//     if (node != null) {
+//       postorder(node.left);
+//       postorder(node.right);
+//       print(node.data);
+//     }
+//   }
+// }
 
-void main() {
-  binarysearch search = binarysearch();
-  search.insert(10);
-  search.insert(20);
-  search.insert(34);
-  search.insert(45);
-  search.insert(23);
-  search.postorder(search.root);
-  search.preorder(search.root);
-}
+// void main() {
+//   binarysearch search = binarysearch();
+//   search.insert(10);
+//   search.insert(20);
+//   search.insert(34);
+//   search.insert(45);
+//   search.insert(23);
+//   search.postorder(search.root);
+//   search.preorder(search.root);
+// }
+// --------------------------------------Trie------------------------------------------------------------------
+
+// class TrieNode {
+//   Map<String, TrieNode> children = {};
+//   bool isEndofword = false;
+
+//   TrieNode() {
+//     children = {};
+//     isEndofword = false;
+//   }
+// }
+
+// class Trie {
+//   TrieNode? root;
+
+//   Trie() {
+//     root = TrieNode();
+//   }
+
+//   void insert(String word) {
+//     TrieNode? currentNode = root;
+//     for (int i = 0; i < word.length; i++) {
+//       String char = word[i];
+
+//       if (currentNode!.children.containsKey(char)) {
+//         currentNode.children[char] = TrieNode();
+//       }
+//       currentNode = currentNode.children[char];
+//     }
+//     currentNode!.isEndofword = true;
+//   }
+
+//   bool contains(String word) {
+//     TrieNode? currentNode = root;
+//     for (int i = 0; i < word.length; i++) {
+//       String char = word[i];
+//       if (currentNode!.children.containsKey(char)) {
+//         return true;
+//       }
+//       currentNode = currentNode.children[char];
+//     }
+//     return currentNode!.isEndofword;
+//   }
+// }
