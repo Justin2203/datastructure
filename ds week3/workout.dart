@@ -490,40 +490,151 @@
 //   heap.display();
 // }
 
-class Graph {
-  Map<int, List<int>> _adjacencyList = {};
+// class Graph {
+//   Map<int, List<int>> _adjacencyList = {};
 
-  Graph() {
-    _adjacencyList = {};
+//   Graph() {
+//     _adjacencyList = {};
 
-    void addvertex(int vertex) {
-      _adjacencyList[vertex] = [];
-    }
+//     void addvertex(int vertex) {
+//       _adjacencyList[vertex] = [];
+//     }
 
-    void addEdges(int vertex1, int vertex2) {
-      _adjacencyList[vertex1]?.add(vertex2);
-      _adjacencyList[vertex2]?.add(vertex1);
-    }
+//     void addEdges(int vertex1, int vertex2) {
+//       _adjacencyList[vertex1]?.add(vertex2);
+//       _adjacencyList[vertex2]?.add(vertex1);
+//     }
 
-    void removeEdges(int vertex1, int vertex2) {
-      _adjacencyList[vertex1]?.remove(vertex2);
-      _adjacencyList[vertex2]?.remove(vertex1);
-    }
+//     void removeEdges(int vertex1, int vertex2) {
+//       _adjacencyList[vertex1]?.remove(vertex2);
+//       _adjacencyList[vertex2]?.remove(vertex1);
+//     }
 
-    void removevertex(int vertex) {
-      _adjacencyList.remove(vertex);
-      _adjacencyList.forEach((key, value) {
-        value.remove(vertex);
-      });
-    }
+//     void removevertex(int vertex) {
+//       _adjacencyList.remove(vertex);
+//       _adjacencyList.forEach((key, value) {
+//         value.remove(vertex);
+//       });
+//     }
 
-    List<int> getNeighbours(int vertex) {
-      return _adjacencyList[vertex] ?? [];
-    }
+//     List<int> getNeighbours(int vertex) {
+//       return _adjacencyList[vertex] ?? [];
+//     }
 
-    @override
-    String toString() {
-      return _adjacencyList.toString();
+//     @override
+//     String toString() {
+//       return _adjacencyList.toString();
+//     }
+//   }
+// }
+class Node {
+  int data;
+  Node? left;
+  Node? right;
+
+  Node(this.data);
+}
+
+class binarysearch {
+  Node? root;
+  binarysearch();
+
+  void insert(int data) {
+    Node? newNode = Node(data);
+    if (root == null) {
+      root = newNode;
+    } else {
+      Node? current = root;
+      while (true) {
+        if (data < current!.data) {
+          if (current.left == null) {
+            current.left = newNode;
+            break;
+          }
+          current = current.left;
+        } else {
+          if (current.right == null) {
+            current.right = newNode;
+            break;
+          }
+          current = current.right;
+        }
+      }
     }
   }
+
+  bool contains(int data) {
+    Node? current = root;
+    while (current != null) {
+      if (data == current.data) {
+        return true;
+      } else if (data <= current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+    return false;
+  }
+
+  bool isbst(Node? node, int minvalue, int maxvalue) {
+    if (node == null) {
+      return true;
+    }
+    if (node.data < minvalue || node.data > maxvalue) {
+      return false;
+    }
+    return isbst(node, minvalue, node.data - 1) &&
+        isbst(node, node.data + 1, maxvalue);
+  }
+
+  bool isvalid() {
+    return isbst(root, 0, 644654764);
+  }
+
+  int getheight(Node? node) {
+    if (node == null) {
+      return 0;
+    }
+
+    int leftHeight = getheight(node.left);
+    int rightHeight = getheight(node.right);
+
+    return 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
+  }
+
+  void preorder(Node? node) {
+    if (node != null) {
+      print(node.data);
+      preorder(node.left);
+      preorder(node.right);
+    }
+  }
+
+  void inorder(Node? node) {
+    if (node != null) {
+      inorder(node.left);
+      print(node.data);
+      inorder(node.right);
+    }
+  }
+
+  void postorder(Node? node) {
+    if (node != null) {
+      postorder(node.left);
+      postorder(node.right);
+      print(node.data);
+    }
+  }
+}
+
+void main() {
+  binarysearch search = binarysearch();
+  search.insert(10);
+  search.insert(20);
+  search.insert(34);
+  search.insert(45);
+  search.insert(23);
+  search.postorder(search.root);
+  search.preorder(search.root);
 }
