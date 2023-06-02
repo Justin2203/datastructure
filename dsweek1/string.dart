@@ -11,17 +11,19 @@
 //   print(reversedString);
 // }
 
-String reverseString(String input) {
-  String reversedstring = '';
+// String reverseString(String input) {
+//   String reversedstring = '';
 
-  for (int i = input.length; i > 0; i++) {
-    reversedstring = reversedstring + input[i];
-  }
-  return reversedstring;
-}
+//   for (int i = input.length; i > 0; i++) {
+//     reversedstring = reversedstring + input[i];
+//   }
+//   return reversedstring;
+// }
 
-void main() {
-  String originalstring = 'Justin Thomas';
-  String reversedstring = reverseString(originalstring);
-  print(reversedstring);
-}
+// void main() {
+//   String originalstring = 'Justin Thomas';
+//   String reversedstring = reverseString(originalstring);
+//   print(reversedstring);
+// }
+
+

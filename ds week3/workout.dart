@@ -711,6 +711,8 @@
 //     adjacencyList[vertex2]?.add(vertex1);
 //   }
 
+  
+
 //   void dfs(String vertex) {
 //     Set<String> visited = {};
 
@@ -724,7 +726,10 @@
 //         traverse(adjacencyvertex);
 //       }
 //     }
+
+   
 //   }
+  
 
 //   traverse(startvertex);
 // }
@@ -749,111 +754,151 @@
 
 // ---------------------------------heap sort---------------------------------------------
 
-class minheap {
-  List<int> heap = [];
+// class minheap {
+//   List<int> heap = [];
 
-  minheap() {
-    heap = [];
-  }
+//   minheap() {
+//     heap = [];
+//   }
 
-  void build(List<int> array) {
-    heap = List.from(array);
-    for (int i = parent(heap.length - 1); i >= 0; i--) {
-      shiftdown(i);
-    }
-  }
+//   void build(List<int> array) {
+//     heap = List.from(array);
+//     for (int i = parent(heap.length - 1); i >= 0; i--) {
+//       shiftdown(i);
+//     }
+//   }
 
-  void shiftdown(int currentindex) {
-    int endindex = heap.length - 1;
-    int leftindex = leftchild(currentindex);
-    while (leftindex <= endindex) {
-      int rightindex = rightchild(currentindex);
-      int indextoshift;
-      if (rightindex <= endindex && heap[rightindex] < heap[leftindex]) {
-        indextoshift = rightindex;
-      } else {
-        indextoshift = leftindex;
-      }
-      if (heap[currentindex] > heap[indextoshift]) {
-        swap(currentindex, indextoshift);
-        currentindex = indextoshift;
-        leftindex = leftchild(currentindex);
-      } else {
-        return;
-      }
-    }
-  }
+//   void shiftdown(int currentindex) {
+//     int endindex = heap.length - 1;
+//     int leftindex = leftchild(currentindex);
+//     while (leftindex <= endindex) {
+//       int rightindex = rightchild(currentindex);
+//       int indextoshift;
+//       if (rightindex <= endindex && heap[rightindex] < heap[leftindex]) {
+//         indextoshift = rightindex;
+//       } else {
+//         indextoshift = leftindex;
+//       }
+//       if (heap[currentindex] > heap[indextoshift]) {
+//         swap(currentindex, indextoshift);
+//         currentindex = indextoshift;
+//         leftindex = leftchild(currentindex);
+//       } else {
+//         return;
+//       }
+//     }
+//   }
 
-  void shiftup(int currentindex) {
-    int parentindex = parent(currentindex);
-    while (currentindex > 0 && heap[parentindex] > heap[currentindex]) {
-      swap(currentindex, parentindex);
-      currentindex = parentindex;
-      parentindex = parent(currentindex);
-    }
-  }
+//   void shiftup(int currentindex) {
+//     int parentindex = parent(currentindex);
+//     while (currentindex > 0 && heap[parentindex] > heap[currentindex]) {
+//       swap(currentindex, parentindex);
+//       currentindex = parentindex;
+//       parentindex = parent(currentindex);
+//     }
+//   }
 
-  void remove() {
-    swap(0, heap.length - 1);
-    heap.removeLast();
-    shiftdown(0);
-  }
+//   void remove() {
+//     swap(0, heap.length - 1);
+//     heap.removeLast();
+//     shiftdown(0);
+//   }
 
-  void insert(int value) {
-    heap.add(value);
-    shiftup(heap.length - 1);
-  }
+//   void insert(int value) {
+//     heap.add(value);
+//     shiftup(heap.length - 1);
+//   }
 
-  int parent(int i) {
-    return ((i - 1) ~/ 2);
-  }
+//   int parent(int i) {
+//     return ((i - 1) ~/ 2);
+//   }
 
-  int leftchild(int i) {
-    return (i * 2 + 1);
-  }
+//   int leftchild(int i) {
+//     return (i * 2 + 1);
+//   }
 
-  int rightchild(int i) {
-    return (i * 2 + 2);
-  }
+//   int rightchild(int i) {
+//     return (i * 2 + 2);
+//   }
 
-  void display() {
-    for (int i = heap.length - 1; i >= 0; i--) {
-      print(heap[i]);
-    }
-  }
+//   void display() {
+//     for (int i = heap.length - 1; i >= 0; i--) {
+//       print(heap[i]);
+//     }
+//   }
 
-  void swap(int i, int j) {
-    int temp = heap[i];
-    heap[i] = heap[j];
-    heap[j] = temp;
-  }
+//   void swap(int i, int j) {
+//     int temp = heap[i];
+//     heap[i] = heap[j];
+//     heap[j] = temp;
+//   }
 
-  void heapsort() {
-    for (int i = heap.length - 1; i >= 0; i--) {
-      swap(0, i);
-      shiftdownheapsort(0, i - 1);
-    }
-  }
+//   void heapsort() {
+//     for (int i = heap.length - 1; i >= 0; i--) {
+//       swap(0, i);
+//       shiftdownheapsort(0, i - 1);
+//     }
+//   }
 
-  void shiftdownheapsort(int currentindex, int endindex) {
-    int leftindex = leftchild(currentindex);
-    while (leftindex <= endindex) {
-      int rightindex = rightchild(currentindex);
-      int idxshift;
-      if (rightindex < endindex && heap[rightindex] < heap[leftindex]) {
-        idxshift = rightindex;
-      } else {
-        idxshift = leftindex;
-      }
-      if (heap[currentindex] > heap[idxshift]) {
-        swap(currentindex, idxshift) {
-          currentindex = idxshift;
-          leftindex = leftchild(currentindex);
-        }
-      }
-      else{
-        return;
-      }
-    }
-  }
-}
+//   void shiftdownheapsort(int currentindex, int endindex) {
+//     int leftindex = leftchild(currentindex);
+//     while (leftindex <= endindex) {
+//       int rightindex = rightchild(currentindex);
+//       int idxshift;
+//       if (rightindex < endindex && heap[rightindex] < heap[leftindex]) {
+//         idxshift = rightindex;
+//       } else {
+//         idxshift = leftindex;
+//       }
+//       if (heap[currentindex] > heap[idxshift]) {
+//         swap(currentindex, idxshift) {
+//           currentindex = idxshift;
+//           leftindex = leftchild(currentindex);
+//         }
+//       }
+//       else{
+//         return;
+//       }
+//     }
+//   }
+// }
+// -------------------------------------bfs---------------------------------------
+// abstract class Graph {
+//   Map<String, List<String>> adjacencyList = {};
+
+//   Graph() {
+//     adjacencyList = {};
+//   }
+
+//   void addVertex(String startvertex) {
+//     if (!adjacencyList.containsKey(startvertex)) {
+//       adjacencyList[startvertex] = [];
+//     }
+//   }
+
+//   void addEdge(String vertex1, String vertex2) {
+//     adjacencyList[vertex1]?.add(vertex2);
+//     adjacencyList[vertex2]?.add(vertex1);
+//   }
+
+//   void bfs(String startVertex) {
+//     Set<String> visited = {};
+//     List<String> queue = [];
+
+//     visited.add(startVertex);
+//     queue.add(startVertex);
+
+//     while (queue.isNotEmpty) {
+//       String currentVertex = queue.removeAt(0);
+//       print('visited vertex: $currentVertex');
+
+//       for (var adjacencyVertex in adjacencyList[currentVertex] ?? []) {
+//         if (!visited.contains(adjacencyVertex)) {
+//           visited.add(adjacencyVertex);
+//           queue.add(adjacencyVertex);
+//         }
+//       }
+//     }
+//   }
+// }
+
