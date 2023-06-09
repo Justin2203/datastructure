@@ -10,7 +10,10 @@ class customstack {
 
   dynamic pop() =>
       isEmpty ? throw Exception('stack empty') : _stack.removeLast();
-  dynamic peek() => isEmpty ? throw Exception('stack empty') : _stack.last;
+
+  dynamic peek() {
+     isEmpty ? throw Exception('stack empty') : _stack.last;
+  }
 
  
   void deleteMiddleElement() {

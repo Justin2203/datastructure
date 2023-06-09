@@ -711,8 +711,6 @@
 //     adjacencyList[vertex2]?.add(vertex1);
 //   }
 
-  
-
 //   void dfs(String vertex) {
 //     Set<String> visited = {};
 
@@ -727,9 +725,7 @@
 //       }
 //     }
 
-   
 //   }
-  
 
 //   traverse(startvertex);
 // }
@@ -902,3 +898,34 @@
 //   }
 // }
 
+class TrieNode {
+  Map<String, TrieNode> children = {};
+  bool isend = false;
+
+  TrieNode() {
+    children = {};
+    isend = false;
+  }
+}
+
+class Trie {
+  TrieNode? root;
+
+  Trie() {
+    root = TrieNode();
+  }
+
+  void insert(String word) {
+    TrieNode? currentNode = root;
+    for (int i = 0; i < word.length; i++) {
+      String char = word[i];
+
+      if (currentNode!.children.containsKey(char)) {
+        currentNode.children[char] = TrieNode();
+      }
+      currentNode.isend = true;
+    }
+  }
+
+ 
+}
