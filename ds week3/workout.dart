@@ -601,17 +601,17 @@
 //     return isbst(root, 0, 644654764);
 //   }
 
-//   int getheight(Node? node) {
-//     if (node == null) {
-//       return 0;
-//     }
+  // int getheight(Node? node) {
+  //   if (node == null) {
+  //     return 0;
+  //   }
 
-//     int leftHeight = getheight(node.left);
-//     int rightHeight = getheight(node.right);
+  //   int leftHeight = getheight(node.left);
+  //   int rightHeight = getheight(node.right);
 
-//     return 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
-//   }
-
+  //   return 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
+  // }
+// 
 //   void preorder(Node? node) {
 //     if (node != null) {
 //       print(node.data);
@@ -693,42 +693,42 @@
 // }
 // -----------------------------------------graph dfs--------------------------------------
 
-// abstract class Graph {
-//   Map<String, List<String>> adjacencyList = {};
+abstract class Graph {
+  Map<String, List<String>> adjacencyList = {};
 
-//   Graph() {
-//     adjacencyList = {};
-//   }
+  Graph() {
+    adjacencyList = {};
+  }
 
-//   void addVertex(String startvertex) {
-//     if (adjacencyList.containsKey(startvertex)) {
-//       adjacencyList[startvertex];
-//     }
-//   }
+  void addVertex(String startvertex) {
+    if (adjacencyList.containsKey(startvertex)) {
+      adjacencyList[startvertex];
+    }
+  }
 
-//   void addEdge(String vertex1, String vertex2) {
-//     adjacencyList[vertex1]?.add(vertex2);
-//     adjacencyList[vertex2]?.add(vertex1);
-//   }
+  void addEdge(String vertex1, String vertex2) {
+    adjacencyList[vertex1]?.add(vertex2);
+    adjacencyList[vertex2]?.add(vertex1);
+  }
 
-//   void dfs(String vertex) {
-//     Set<String> visited = {};
+  void dfs(String vertex) {
+    Set<String> visited = {};
 
-//     void traverse(String vertex) {
-//       visited.add(vertex);
-//       print('visited vertex:$vertex');
-//     }
+    void traverse(String vertex) {
+      visited.add(vertex);
+      print('visited vertex:$vertex');
+    }
 
-//     for (var adjacencyvertex in adjacencyList[vertex] ?? []) {
-//       if (visited.contains(adjacencyvertex)) {
-//         traverse(adjacencyvertex);
-//       }
-//     }
+    for (var adjacencyvertex in adjacencyList[vertex] ?? []) {
+      if (visited.contains(adjacencyvertex)) {
+        traverse(adjacencyvertex);
+      }
+    }
 
-//   }
+  }
 
-//   traverse(startvertex);
-// }
+  traverse(startvertex);
+}
 
 // ---------------------------------dfs graph logic---------------------------
 
@@ -859,44 +859,44 @@
 //   }
 // }
 // -------------------------------------bfs---------------------------------------
-// abstract class Graph {
-//   Map<String, List<String>> adjacencyList = {};
+abstract class Graph {
+  Map<String, List<String>> adjacencyList = {};
 
-//   Graph() {
-//     adjacencyList = {};
-//   }
+  Graph() {
+    adjacencyList = {};
+  }
 
-//   void addVertex(String startvertex) {
-//     if (!adjacencyList.containsKey(startvertex)) {
-//       adjacencyList[startvertex] = [];
-//     }
-//   }
+  void addVertex(String startvertex) {
+    if (!adjacencyList.containsKey(startvertex)) {
+      adjacencyList[startvertex] = [];
+    }
+  }
 
-//   void addEdge(String vertex1, String vertex2) {
-//     adjacencyList[vertex1]?.add(vertex2);
-//     adjacencyList[vertex2]?.add(vertex1);
-//   }
+  void addEdge(String vertex1, String vertex2) {
+    adjacencyList[vertex1]?.add(vertex2);
+    adjacencyList[vertex2]?.add(vertex1);
+  }
 
-//   void bfs(String startVertex) {
-//     Set<String> visited = {};
-//     List<String> queue = [];
+  void bfs(String startVertex) {
+    Set<String> visited = {};
+    List<String> queue = [];
 
-//     visited.add(startVertex);
-//     queue.add(startVertex);
+    visited.add(startVertex);
+    queue.add(startVertex);
 
-//     while (queue.isNotEmpty) {
-//       String currentVertex = queue.removeAt(0);
-//       print('visited vertex: $currentVertex');
+    while (queue.isNotEmpty) {
+      String currentVertex = queue.removeAt(0);
+      print('visited vertex: $currentVertex');
 
-//       for (var adjacencyVertex in adjacencyList[currentVertex] ?? []) {
-//         if (!visited.contains(adjacencyVertex)) {
-//           visited.add(adjacencyVertex);
-//           queue.add(adjacencyVertex);
-//         }
-//       }
-//     }
-//   }
-// }
+      for (var adjacencyVertex in adjacencyList[currentVertex] ?? []) {
+        if (!visited.contains(adjacencyVertex)) {
+          visited.add(adjacencyVertex);
+          queue.add(adjacencyVertex);
+        }
+      }
+    }
+  }
+}
 
 class TrieNode {
   Map<String, TrieNode> children = {};
@@ -929,3 +929,62 @@ class Trie {
 
  
 }
+//...........................................graph bfs................................................
+abstract class Graph {
+  Map<String, List<String>> adjacencyList = {};
+
+  Graph() {
+    adjacencyList = {};
+  }
+
+  void addVertex(String vertex) {
+    if (!adjacencyList.containsKey(vertex)) {
+      adjacencyList[vertex] = [];
+    }
+  }
+
+  void addEdge(String vertex1, String vertex2) {
+    adjacencyList[vertex1]?.add(vertex2);
+    adjacencyList[vertex2]?.add(vertex1);
+  }
+
+  void bfs(String startVertex) {
+    Set<String> visited = {};
+    Queue<String> queue = Queue<String>();
+
+    visited.add(startVertex);
+    queue.add(startVertex);
+
+    while (queue.isNotEmpty) {
+      String currentVertex = queue.removeFirst();
+      print('Visited vertex: $currentVertex');
+
+      List<String>? neighbors = adjacencyList[currentVertex];
+      if (neighbors != null) {
+        for (var neighbor in neighbors) {
+          if (!visited.contains(neighbor)) {
+            visited.add(neighbor);
+            queue.add(neighbor);
+          }
+        }
+      }
+    }
+  }
+}
+
+void main() {
+  Graph graph = Graph();
+  graph.addVertex('A');
+  graph.addVertex('B');
+  graph.addVertex('C');
+  graph.addVertex('D');
+  graph.addVertex('E');
+  graph.addEdge('A', 'B');
+  graph.addEdge('A', 'C');
+  graph.addEdge('B', 'D');
+  graph.addEdge('C', 'E');
+
+  print('Breadth-First Traversal (starting from vertex A):');
+  graph.bfs('A');
+}
+

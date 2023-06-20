@@ -78,7 +78,7 @@ class Node {
 class BinarySearchTree {
   Node? root;
 
-  BinarySearchTree();
+//  BinarySearchTree();
 
   void insert(int data) {
     Node newNode = Node(data);
@@ -105,7 +105,7 @@ class BinarySearchTree {
     }
   }
 
-  bool contains(int data) {
+  bool search(int data) {
     Node? current = root;
 
     while (current != null) {
@@ -133,7 +133,7 @@ class BinarySearchTree {
         isBSTUtil(node.right, node.data + 1, maxValue);
   }
   bool isValidBST() {
-    return isBSTUtil(root, 0, 56776);
+    return isBSTUtil(root, 0, 20);
   }
 
   void preorder(Node? node) {
@@ -165,8 +165,8 @@ void main() {
   var bst = BinarySearchTree();
   bst.insert(14);
   bst.insert(28);
-  print(bst.contains(1));
-  print(bst.contains(14));
+  print(bst.search(1));
+  print(bst.search(14));
 
   print('pre-order traversal:');
   bst.preorder(bst.root);
