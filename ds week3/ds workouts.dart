@@ -256,42 +256,42 @@
 
 // --------------------------------------bfs-------------------------------------------------
 
-// class Graph {
-//   Map<int, List<int>> adjacencyList = {};
+class Graph {
+  Map<int, List<int>> adjacencyList = {};
 
-//   Graph() {
-//     adjacencyList = {};
-//   }
+  Graph() {
+    adjacencyList = {};
+  }
 
-//   void addvertex(int vertex) {
-//     adjacencyList[vertex] = [];
-//   }
+  void addvertex(int vertex) {
+    adjacencyList[vertex] = [];
+  }
 
-//   void addaedges(int vertex1, int vertex2) {
-//     adjacencyList[vertex1]?.add(vertex2);
-//     adjacencyList[vertex2]?.add(vertex1);
-//   }
+  void addaedges(int vertex1, int vertex2) {
+    adjacencyList[vertex1]?.add(vertex2);
+    adjacencyList[vertex2]?.add(vertex1);
+  }
 
-//   void bfs(int vertex) {
-//     Set<int> visited = {};
-//     List<int> queue = [];
+  void bfs(int vertex) {
+    Set<int> visited = {};
+    List<int> queue = [];
 
-//     visited.add(vertex);
-//     queue.add(vertex);
+    visited.add(vertex);
+    queue.add(vertex);
 
-//     while (queue.isNotEmpty) {
-//       int currentvertex = queue.removeAt(0);
-//       print('visited vertex:$currentvertex');
+    while (queue.isNotEmpty) {
+      int currentvertex = queue.removeAt(0);
+      print('visited vertex:$currentvertex');
 
-//       for (var adjacencyvertex in adjacencyList[vertex] ?? []) {
-//         if (visited.contains(adjacencyvertex)) {
-//           visited.add(adjacencyvertex);
-//           queue.add(adjacencyvertex);
-//         }
-//       }
-//     }
-//   }
-// }
+      for (var adjacencyvertex in adjacencyList[vertex] ?? []) {
+        if (visited.contains(adjacencyvertex)) {
+          visited.add(adjacencyvertex);
+          queue.add(adjacencyvertex);
+        }
+      }
+    }
+  }
+}
 // ----------------------------------------dfs-------------------------------------------------
 class Graph {
   Map<String, List<String>> adjacencyList = {};

@@ -5,7 +5,7 @@ int partition(List<int> array, int lb, int ub) {
   int start = lb;
   int end = ub;
   while (start < end) {
-    while (array[start] <= pivot) {
+    while (array[start] <= pivot && start != end) {
       start++;
     }
     while (array[end] > pivot) {
@@ -32,8 +32,8 @@ void quicksort(List<int> array, int lb, int ub) {
 }
 
 void main() {
-  List<int> numbers = [7,6,10,5,9,2,1,15];
+  List<int> numbers = [5, 8, 3, 2, 6,9,1];
   print('Before sorting:$numbers');
-  quicksort(numbers,0,7);
+  quicksort(numbers, 0, numbers.length - 1);
   print('After sorting:$numbers');
 }

@@ -693,6 +693,8 @@
 // }
 // -----------------------------------------graph dfs--------------------------------------
 
+import 'dart:collection';
+
 abstract class Graph {
   Map<String, List<String>> adjacencyList = {};
 
@@ -859,7 +861,7 @@ abstract class Graph {
 //   }
 // }
 // -------------------------------------bfs---------------------------------------
-abstract class Graph {
+ class Graphs {
   Map<String, List<String>> adjacencyList = {};
 
   Graph() {
@@ -930,8 +932,8 @@ class Trie {
  
 }
 //...........................................graph bfs................................................
-abstract class Graph {
-  Map<String, List<String>> adjacencyList = {};
+ class Graphs {
+   Map<String, List<String>> adjacencyList = {};
 
   Graph() {
     adjacencyList = {};
@@ -973,7 +975,7 @@ abstract class Graph {
 }
 
 void main() {
-  Graph graph = Graph();
+  Graph graph = Graphs();
   graph.addVertex('A');
   graph.addVertex('B');
   graph.addVertex('C');
