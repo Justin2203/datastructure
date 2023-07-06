@@ -1,43 +1,39 @@
 class Node {
   dynamic data;
   Node? next;
-  Node? prev;
 
   Node(this.data);
 }
 
-class DoublyLInkedList {
+class SinglyLinkedList {
   Node? head;
   Node? tail;
 
   void add(dynamic data) {
-    Node add = Node(data);
+    Node? add = Node(data);
     if (head == null) {
       head = add;
-      tail = add;
     } else {
       tail!.next = add;
-      add.prev = tail;
     }
     tail = add;
   }
 
   void display() {
-    Node? curr = head;
-    while (curr != null) {
-      print(curr.data);
-      curr = curr.next;
+    var current = head;
+    while (current != null) {
+      print(current.data);
+      current = current.next;
     }
   }
 }
 
 void main() {
-  var list = DoublyLInkedList();
+  var list = SinglyLinkedList();
   list.add(10);
   list.add(20);
   list.add(30);
   list.add(40);
   list.add(50);
-  list.add(60);
   list.display();
 }

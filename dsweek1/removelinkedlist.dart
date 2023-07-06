@@ -173,7 +173,7 @@ class LinkedList {
     }
   }
 
-  void printList() {
+  void display() {
     Node? currentNode = head;
     while (currentNode != null) {
       print(currentNode.value);
@@ -190,7 +190,7 @@ void main() {
   list.add(4);
   list.add(5);
 
-  list.printList();
+  list.display();
 
   // Remove the element at position 2.
   list.remove(2);
@@ -198,5 +198,5 @@ void main() {
   print('');
 
   // Print the linked list again.
-  list.printList();
+  list.display();
 }

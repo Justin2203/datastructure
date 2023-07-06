@@ -6,12 +6,12 @@ class Node {
   Node(this.data);
 }
 
-class DoublyLInkedList {
+class DoublyLinkedList {
   Node? head;
   Node? tail;
 
   void add(dynamic data) {
-    Node add = Node(data);
+    Node? add = Node(data);
     if (head == null) {
       head = add;
       tail = add;
@@ -23,21 +23,20 @@ class DoublyLInkedList {
   }
 
   void display() {
-    Node? curr = head;
-    while (curr != null) {
-      print(curr.data);
-      curr = curr.next;
+    Node? current = head;
+    while (current != null) {
+      print(current.data);
+      current = current.next;
     }
   }
 }
 
 void main() {
-  var list = DoublyLInkedList();
+  var list = DoublyLinkedList();
   list.add(10);
   list.add(20);
   list.add(30);
   list.add(40);
   list.add(50);
-  list.add(60);
   list.display();
 }
